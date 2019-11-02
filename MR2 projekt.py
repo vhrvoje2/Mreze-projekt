@@ -46,9 +46,9 @@ for x in range(int(brojPonavljanja)):
 
     #pretvaranje u binarni oblik
     binarniHash = (bin(int(generiranHash, 16)))[2:]
-
+    binarniHash = binarniHash.zfill(velicinaListe)
     #brojacki loop
-    for y in range(0, len(binarniHash)):
+    for y in range(velicinaListe-len(binarniHash), len(binarniHash)):
         if binarniHash[y] == "1":
             lista[y] += 1
 
@@ -63,8 +63,10 @@ if brojPonavljanja == "1":
 
     print("Generiran sazetak u binarnom obliku: ")
     print(binarniHash)
+    print(len(binarniHash))
 
 if int(brojPonavljanja) > 1:
+    print(y)
     plt.figure(dpi=150)
     plt.title(unosAlgoritma.capitalize())
     plt.plot(lista, color='red', linewidth=0.5)
