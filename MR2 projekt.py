@@ -47,10 +47,14 @@ for x in range(int(brojPonavljanja)):
     #pretvaranje u binarni oblik
     binarniHash = (bin(int(generiranHash, 16)))[2:]
     binarniHash = binarniHash.zfill(velicinaListe)
+    
     #brojacki loop
     for y in range(velicinaListe-len(binarniHash), len(binarniHash)):
         if binarniHash[y] == "1":
             lista[y] += 1
+
+maxValue = max(lista)/int(brojPonavljanja)
+minValue = min(lista)/int(brojPonavljanja)
 
 if brojPonavljanja == "1":
     print("Generiran string: ")
@@ -66,10 +70,9 @@ if brojPonavljanja == "1":
     print(len(binarniHash))
 
 if int(brojPonavljanja) > 1:
-    print(y)
     plt.figure(dpi=150)
     plt.title(unosAlgoritma.capitalize())
     plt.plot(lista, color='red', linewidth=0.5)
-    plt.ylabel("Broj ponavljanja")
+    plt.ylabel(str(minValue) + "-" + str(maxValue))
     plt.xlabel("Broj generiranih poruka: " + brojPonavljanja)
     plt.show()
