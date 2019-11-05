@@ -49,7 +49,7 @@ for x in range(int(brojPonavljanja)):
     binarniHash = binarniHash.zfill(velicinaListe)
     
     #brojacki loop
-    for y in range(velicinaListe-len(binarniHash), len(binarniHash)):
+    for y in range(len(binarniHash)):
         if binarniHash[y] == "1":
             lista[y] += 1
 
