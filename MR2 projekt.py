@@ -13,24 +13,29 @@ def hashFunkcija(string, algoritam):
     sazetak = hashlib.new(algoritam, string.encode())
     return sazetak.hexdigest()
 
+#postavljanje veličine liste za brojanje
+#md5(), sha1(), sha224(), sha256(), sha384(), sha512(), blake2b(), blake2s(), sha3_224, sha3_256, sha3_384, sha3_512, shake_128, and shake_256.
+def velListe(algoritam):
+    if unosAlgoritma == "md5":
+        velicinaListe = 128
+    elif unosAlgoritma == "sha1":
+        velicinaListe = 160
+    elif unosAlgoritma in ("sha224", "sha3_224"):
+        velicinaListe = 224
+    elif unosAlgoritma in ("sha256", "blake2s", "sha3_256"):
+        velicinaListe = 256
+    elif unosAlgoritma in ("sha384", "sha3_384"):
+        velicinaListe = 384
+    elif unosAlgoritma in ("sha512", "sha3_512", "blake2b"):
+        velicinaListe = 512
+
+    return velicinaListe
+
 #unos parametara
 stringLen = int(input("Unesite duljinu poruke: "))
 unosAlgoritma = input("Unesite algoritam kriptiranja: ")
 brojPonavljanja = input("Unesite broj poruka koje zelite generirati: ")
-
-#md5(), sha1(), sha224(), sha256(), sha384(), sha512(), blake2b(), blake2s(), sha3_224, sha3_256, sha3_384, sha3_512, shake_128, and shake_256.
-if unosAlgoritma == "md5":
-    velicinaListe = 128
-elif unosAlgoritma == "sha1":
-    velicinaListe = 160
-elif unosAlgoritma in ("sha224", "sha3_224"):
-    velicinaListe = 224
-elif unosAlgoritma in ("sha256", "blake2s", "sha3_256"):
-    velicinaListe = 256
-elif unosAlgoritma in ("sha384", "sha3_384"):
-    velicinaListe = 384
-elif unosAlgoritma in ("sha512", "sha3_512", "blake2b"):
-    velicinaListe = 512
+velicinaListe = velListe(unosAlgoritma)
 
 #lista za brojanje
 lista = []
