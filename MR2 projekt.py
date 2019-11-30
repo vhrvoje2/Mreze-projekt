@@ -31,16 +31,19 @@ def velListe(algoritam):
 
     return velicinaListe
 
+def praznaLista(velicinaListe):
+    lista = []
+
+    for x in range(velicinaListe):
+        lista.append(0)
+    return lista
+
 #unos parametara
 stringLen = int(input("Unesite duljinu poruke: "))
 unosAlgoritma = input("Unesite algoritam kriptiranja: ")
 brojPonavljanja = input("Unesite broj poruka koje zelite generirati: ")
 velicinaListe = velListe(unosAlgoritma)
-
-#lista za brojanje
-lista = []
-for x in range(velicinaListe):
-    lista.append(0)
+lista = praznaLista(velicinaListe)
 
 for x in range(int(brojPonavljanja)):
     #generiranje stringa
@@ -58,8 +61,8 @@ for x in range(int(brojPonavljanja)):
         if binarniHash[y] == "1":
             lista[y] += 1
 
-maxValue = max(lista)/int(brojPonavljanja)
-minValue = min(lista)/int(brojPonavljanja)
+maxValue = round(max(lista)/int(brojPonavljanja), 2)
+minValue = round(min(lista)/int(brojPonavljanja), 2)
 
 if brojPonavljanja == "1":
     print("Generiran string: ")
@@ -72,7 +75,6 @@ if brojPonavljanja == "1":
 
     print("Generiran sazetak u binarnom obliku: ")
     print(binarniHash)
-    print(len(binarniHash))
 
 if int(brojPonavljanja) > 1:
     plt.figure(dpi=150)
