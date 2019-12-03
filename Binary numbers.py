@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 
 #unos parametara
 unosAlgoritma = input("Unesite algoritam kriptiranja: ")
+unosPotencije = int(input("Unesite potenciju broje 2: "))
 
 #md5(), sha1(), sha224(), sha256(), sha384(), sha512(), blake2b(), blake2s(), sha3_224, sha3_256, sha3_384, sha3_512, shake_128, and shake_256.
 def velListe(algoritam):
@@ -28,7 +29,7 @@ velicinaListe = velListe(unosAlgoritma)
 for x in range(velicinaListe):
     lista.append(0)
 
-for broj in range(2**16):
+for broj in range(2**unosPotencije):
     #pretvaranje u binarni oblik
     binBroj = bin(int(broj))[2:]
 
@@ -43,12 +44,12 @@ for broj in range(2**16):
         if binarniHash[y] == "1":
             lista[y] += 1
 
-maxValue = round(max(lista)/2**16, 2)
-minValue = round(min(lista)/2**16, 2)
+maxValue = round(max(lista)/2**unosPotencije, 2)
+minValue = round(min(lista)/2**unosPotencije, 2)
 
 plt.figure(dpi=150)
 plt.title(unosAlgoritma.capitalize())
 plt.plot(lista, color='red', linewidth=0.5)
 plt.ylabel(str(minValue) + "-" + str(maxValue))
-plt.xlabel("Broj generiranih brojeva: " + str(2**16))
+plt.xlabel("Broj generiranih brojeva: " + str(2**unosPotencije))
 plt.show()
